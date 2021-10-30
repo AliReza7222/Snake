@@ -3,9 +3,6 @@ import consts
 
 class Snake:
 
-    dx = {'UP': 0, 'DOWN': 0, 'LEFT': -1, 'RIGHT': 1}
-    dy = {'UP': -1, 'DOWN': 1, 'LEFT': 0, 'RIGHT': 0}
-
     def __init__(self, keys, game, pos, color, direction):
         self.keys = keys
         self.cells = [pos]
@@ -14,6 +11,8 @@ class Snake:
         self.color = color
         self.direction = direction
         game.get_cell(pos).set_color(color)
+        self.dx = {'UP': 0, 'DOWN': 0, 'LEFT': -1, 'RIGHT': 1}
+        self.dy = {'UP': -1, 'DOWN': 1, 'LEFT': 0, 'RIGHT': 0}
 
     def get_head(self):
         return self.cells[-1]
@@ -28,7 +27,18 @@ class Snake:
         return x
 
     def next_move(self):
-        pass
+        x, y = self.dx[self.direction], self.dy[self.direction]
+        x_p, y_p = self.cells[0]
+        pos_new = x_p+x, y_p+y
+        if pos_new == (19, 19):
+            pos_new = (19, 0)
+        elif pos_new == (0, 0):
+            pos_new = (0, 19)
+        elif pos_new == (0, 19):
+            pos_new = (0, 0)
+        elif pos_new == (19, 0):
+            pos_new = (19, 19)
+        self.cells.append(pos_new)
 
     def handle(self, keys):
         for key in keys:
