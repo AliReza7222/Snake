@@ -29,15 +29,16 @@ class Snake:
     def next_move(self):
         x, y = self.dx[self.direction], self.dy[self.direction]
         x_p, y_p = self.cells[0]
-        pos_new = x_p+x, y_p+y
-        if pos_new == (19, 19):
-            pos_new = (19, 0)
-        elif pos_new == (0, 0):
-            pos_new = (0, 19)
-        elif pos_new == (0, 19):
-            pos_new = (0, 0)
-        elif pos_new == (19, 0):
-            pos_new = (19, 19)
+        x_new, y_new = x_p+x, y_p+y
+        if x_new==20 :
+            x_new = 0
+        elif x_new == -1:
+            x_new = 19
+        elif y_new == 20:
+            y_new = 0
+        elif y_new == -1:
+            y_new = 19
+        pos_new = (x_new, y_new)
         self.cells.append(pos_new)
 
     def handle(self, keys):
