@@ -27,10 +27,11 @@ class Snake:
         return x
 
     def next_move(self):
+        block = consts.block_cells
         x, y = self.dx[self.direction], self.dy[self.direction]
         x_p, y_p = self.cells[0]
         x_new, y_new = x_p+x, y_p+y
-        if x_new==20 :
+        if x_new == 20:
             x_new = 0
         elif x_new == -1:
             x_new = 19
@@ -39,7 +40,21 @@ class Snake:
         elif y_new == -1:
             y_new = 19
         pos_new = (x_new, y_new)
-        self.cells.append(pos_new)
+        pos_snakes = [s.cells for s in self.game.snakes]
+        kill_cells = []
+        for list_cell in pos_snakes:
+            for tuple_cell in list_cell:
+                kill_cells.append(tuple_cell)
+        if pos_new in self.cells or pos_new in block or pos_new in kill_cells:
+            self.game.kill(self)
+        if pos_new == self.game.get_next_fruit_pos:
+            self.cells.append(pos_new)
+            self.game.get_cell(pos_new).set_color(self.color)
+        if pos_new != self.game.get_next_fruit_pos:
+            self.cells.remove(self.cells[0])
+            self.game.get_cell(self.cells[0]).set_color(consts.back_color)
+            self.cells.append(pos_new)
+            self.game.get_cell(pos_new).set_color(self.color)
 
     def handle(self, keys):
         for key in keys:
