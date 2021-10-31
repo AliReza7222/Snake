@@ -53,6 +53,12 @@ class GameManager:
                     ret = i, j
 
         return ret
-
+    # not compalate func
     def handle(self, keys):
-        pass
+        for snake in self.snakes:
+            snake.handle(keys)
+        for snake in self.snakes:
+            snake.next_move()
+            self.turn += 1
+            if self.turn % 10 == 0:
+                self.get_cell(self.get_next_fruit_pos()).set_color(consts.fruit_color)

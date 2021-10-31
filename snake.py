@@ -25,7 +25,7 @@ class Snake:
             x -= self.game.size
 
         return x
-
+    # incomplate func
     def next_move(self):
         block = consts.block_cells
         x, y = self.dx[self.direction], self.dy[self.direction]
@@ -45,15 +45,17 @@ class Snake:
         for list_cell in pos_snakes:
             for tuple_cell in list_cell:
                 kill_cells.append(tuple_cell)
-        if pos_new in self.cells or pos_new in block or pos_new in kill_cells:
+        if (pos_new in self.cells) or (list(pos_new) in block) or (pos_new in kill_cells):
             self.game.kill(self)
-        if pos_new == self.game.get_next_fruit_pos:
+        print(pos_new,     ' ' , self.game.get_next_fruit_pos())
+        if pos_new == self.game.get_next_fruit_pos():
             self.cells.append(pos_new)
             self.game.get_cell(pos_new).set_color(self.color)
         if pos_new != self.game.get_next_fruit_pos:
-            self.cells.remove(self.cells[0])
-            self.game.get_cell(self.cells[0]).set_color(consts.back_color)
+            whit_cell = self.cells[0]
             self.cells.append(pos_new)
+            self.cells.remove(self.cells[0])
+            self.game.get_cell(whit_cell).set_color(consts.back_color)
             self.game.get_cell(pos_new).set_color(self.color)
 
     def handle(self, keys):
