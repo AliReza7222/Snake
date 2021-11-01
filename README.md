@@ -5,4 +5,4 @@ two snake is in game and snakes' should eat fruits color red and if accident wit
 #  Run game
 for run game , run file main.py.
 
-![eating_apple](https://user-images.githubusercontent.com/87914098/139663442-af121a85-72ba-4377-a5b7-917000dfc238.gif)
+![snake](https://user-images.githubusercontent.com/87914098/139700819-ba14dd1f-84d7-4902-a0e7-c2a4bed39c3b.gif)
