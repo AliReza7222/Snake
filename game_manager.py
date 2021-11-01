@@ -54,11 +54,10 @@ class GameManager:
                     ret = i, j
 
         return ret
-    # not compalate func
+
     def handle(self, keys):
         for snake in self.snakes:
             snake.handle(keys)
-        for snake in self.snakes:
             snake.next_move()
             self.turn += 1
             if self.turn % 10 == 0:
