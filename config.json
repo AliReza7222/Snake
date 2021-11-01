@@ -13,8 +13,8 @@
   "sx": 30,
   "sy": 50,
   "table_size": 20,
-  "height": 800,
-  "width": 800,
+  "height": 650,
+  "width": 650,
   "snakes": [
     {
       "keys": {
