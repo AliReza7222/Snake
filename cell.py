@@ -8,7 +8,7 @@ class Cell:
         self.size = consts.cell_size
         self.surface = surface
         self.color = color
-        pygame.draw.rect(surface, (0, 0, 0), (sx, sy, consts.cell_size, consts.cell_size), 1)
+        pygame.draw.rect(surface, (255, 255, 255), (sx, sy, consts.cell_size, consts.cell_size), 1)
         self.set_color(color)
 
     def set_color(self, color):
