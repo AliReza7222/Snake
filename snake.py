@@ -1,5 +1,5 @@
 import consts
-
+import pygame
 
 class Snake:
 
@@ -39,6 +39,8 @@ class Snake:
         cell_new = nx, ny
 
         if not cell or cell.color != consts.fruit_color and cell.color != consts.back_color:
+            pygame.mixer.music.load("Game Over SFX and Voice.mp3")
+            pygame.mixer.music.play()
             self.game.kill(self)
             return
 
@@ -48,6 +50,9 @@ class Snake:
             whit_cell = self.cells.pop(0)
             self.game.get_cell(whit_cell).set_color(consts.back_color)
 
+        if cell.color == consts.fruit_color:
+            pygame.mixer.music.load("sound.ogg")
+            pygame.mixer.music.play()
         cell.set_color(self.color)
 
     def handle(self, keys):
