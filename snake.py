@@ -29,7 +29,7 @@ class Snake:
     def next_move(self):
         block = consts.block_cells
         x, y = self.dx[self.direction], self.dy[self.direction]
-        x_p, y_p = self.cells[0]
+        x_p, y_p = self.get_head()
         x_new, y_new = x_p+x, y_p+y
         if x_new == 20:
             x_new = 0
@@ -47,8 +47,8 @@ class Snake:
                 kill_cells.append(tuple_cell)
         if (pos_new in self.cells) or (list(pos_new) in block) or (pos_new in kill_cells):
             self.game.kill(self)
-        print(pos_new,     ' ' , self.game.get_next_fruit_pos())
-        if pos_new == self.game.get_next_fruit_pos():
+
+        if pos_new in self.game.list_frouit:
             self.cells.append(pos_new)
             self.game.get_cell(pos_new).set_color(self.color)
         if pos_new != self.game.get_next_fruit_pos:
