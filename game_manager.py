@@ -13,7 +13,6 @@ class GameManager:
         self.sy = sy
         self.snakes = list()
         self.turn = 0
-        self.list_frouit = []
         for i in range(self.size):
             tmp = []
             for j in range(self.size):
@@ -58,9 +57,10 @@ class GameManager:
     def handle(self, keys):
         for snake in self.snakes:
             snake.handle(keys)
+
+        for snake in self.snakes:
             snake.next_move()
-            self.turn += 1
-            if self.turn % 10 == 0:
-                frouit = self.get_next_fruit_pos()
-                self.list_frouit.append(frouit)
-                self.get_cell(self.list_frouit[-1]).set_color(consts.fruit_color)
+
+        self.turn += 1
+        if self.turn % 10 == 0:
+            self.get_cell(self.get_next_fruit_pos()).set_color(consts.fruit_color)
