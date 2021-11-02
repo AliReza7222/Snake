@@ -60,13 +60,14 @@ class Snake:
             if key in self.keys:
                 if self.keys[key] == self.direction:
                     continue
-                elif self.keys[key] == "UP" and self.direction == "DOWN":
+                if self.keys[key] == "UP" and self.direction == "DOWN":
                     continue
-                elif self.keys[key] == "DOWN" and self.direction == "UP":
+                if self.keys[key] == "DOWN" and self.direction == "UP":
                     continue
-                elif self.keys[key] == 'LEFT' and self.direction == 'RIGHT':
+                if self.keys[key] == 'LEFT' and self.direction == 'RIGHT':
                     continue
-                elif self.keys[key] == 'RIGHT' and self.direction == 'LEFT':
+                if self.keys[key] == 'RIGHT' and self.direction == 'LEFT':
                     continue
                 else:
                     self.direction = self.keys[key]
+            break
