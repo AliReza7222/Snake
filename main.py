@@ -7,6 +7,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((consts.height, consts.width))
     screen.fill(consts.back_color)
+    pygame.display.set_caption(" Snake ")
     game = GameManager(consts.table_size, screen, consts.sx, consts.sy, consts.block_cells)
     snakes = list()
     for snake in consts.snakes:

@@ -10,11 +10,11 @@
     [15, 14],
     [16, 14]
   ],
-  "sx": 30,
-  "sy": 50,
+  "sx": 0,
+  "sy": 0,
   "table_size": 20,
-  "height": 650,
-  "width": 650,
+  "height": 601,
+  "width": 601,
   "snakes": [
     {
       "keys": {
